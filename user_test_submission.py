@@ -8,7 +8,7 @@ import score_cluster
 import score_physics
 import plotting
 
-filename = "test.csv"
+filename = "/Users/yetkin/ramp/trackML/generate/hits_train_00.csv"
 
 def read_data(filename):
     df = pd.read_csv(filename)
@@ -48,6 +48,6 @@ if __name__ == '__main__':
         tracker.fit(X_train_df.values, y_train_df.values)
 
         y_predicted = tracker.predict(X_test_df.values)
-        score_eff, score_fake = score_cluster.evaluate(y_test_df.values, y_predicted)
+        score_eff, score_fake = score_cluster.evaluate(y_test_df.values[:,0], y_predicted)
         print 'score efficiency = ', score_eff
         print 'score fake = ', score_fake
